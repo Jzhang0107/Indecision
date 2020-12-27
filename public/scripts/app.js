@@ -1,11 +1,14 @@
+"use strict";
+
+// auto-generated file that contains react code
+
 console.log("App.js is running");
 
-// var template = <p>Hello World</p>
-var template = React.createElement
-(
-    "p", 
-    {id: "test"}, 
-    "Hello World"
+// JSX - JavaScript XML
+var template = React.createElement(
+  "h1",
+  null,
+  "Indecision App"
 );
 var appRoot = document.getElementById("app");
 
