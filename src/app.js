@@ -22,20 +22,41 @@ const template = (
     </div>
 );
 
-const user = {
-    name: "Jason",
-    age: 19,
-    location: 'New York City'
+let count = 0;
+
+const addOne = () => 
+{
+    count += 1;
+    renderCounterApp();
+    console.log('add one', count);
 }
 
-const templateTwo = (
-    <div>
-        <h1>{user.name ? user.name : "Yukina"}</h1>
-        {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-        <p>Location: {user.location}</p>
-    </div>
-)
+const minusOne = () => 
+{
+    count -= 1;
+    renderCounterApp();
+}
 
-const appRoot = document.getElementById("app");
+const resetCounter = () => 
+{
+    count = 0;
+    renderCounterApp();
+}
 
-ReactDOM.render(template, appRoot);
+const renderCounterApp = () =>
+{
+    const appRoot = document.getElementById("app");
+    
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={resetCounter}>Reset</button>
+        </div>
+    )
+
+    ReactDOM.render(templateTwo, appRoot);
+}
+
+renderCounterApp();
