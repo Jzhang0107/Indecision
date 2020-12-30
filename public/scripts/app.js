@@ -62,16 +62,14 @@ var render = function render() {
         React.createElement(
             "ol",
             null,
-            React.createElement(
-                "li",
-                null,
-                "Item one"
-            ),
-            React.createElement(
-                "li",
-                null,
-                "Item two"
-            )
+            app.options.map(function (item) {
+                return React.createElement(
+                    "li",
+                    { id: item },
+                    "Item: ",
+                    item
+                );
+            })
         ),
         React.createElement(
             "button",

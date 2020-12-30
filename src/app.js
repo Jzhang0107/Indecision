@@ -43,8 +43,12 @@ const render = () =>
             <p>{app.options.length > 0 ? "Here are your options":"No Options"}</p>
             <p>{app.options.length}</p>
             <ol>
-                <li>Item one</li>
-                <li>Item two</li>
+                {
+                    app.options.map((item) => 
+                    {
+                        return <li id={item}>Item: {item}</li>;
+                    })
+                }
             </ol>
             <button onClick={clearList}>Remove all items</button>
             <br />
