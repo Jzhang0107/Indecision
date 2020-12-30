@@ -1,15 +1,16 @@
-'use strict';
+"use strict";
 
-console.log("Arrow Functions");
+// console.log("Arrow Functions");
 
-var square = function square(x) {
-    return x * x;
+var getFirstName = function getFirstName(fullName) {
+    return fullName.split(" ")[0];
 };
 
-var squareArrow = function squareArrow(x) {
-    return x * x;
+var getFirstNameArr = function getFirstNameArr(fullName) {
+    return fullName.split(" ")[0];
 };
 
-var x = 8;
+var fullName = "Yukina Himeragi";
 
-console.log('Square of ' + x + ' is: ', squareArrow(x));
+// console.log('Square of ' + x + ' is: ', squareArrow(x));
+console.log("The first name of " + fullName + " is", getFirstNameArr(fullName));

@@ -1,15 +1,13 @@
-console.log("Arrow Functions");
+// console.log("Arrow Functions");
 
-const square = function(x)
+const getFirstName = (fullName) =>
 {
-    return x * x;
+    return fullName.split(" ")[0];
 };
 
-const squareArrow = (x) => 
-{
-    return x * x;
-};
+const getFirstNameArr = (fullName) => fullName.split(" ")[0];
 
-const x = 8
+const fullName = "Yukina Himeragi";
 
-console.log('Square of ' + x + ' is: ', squareArrow(x));
+// console.log('Square of ' + x + ' is: ', squareArrow(x));
+console.log("The first name of " + fullName + " is", getFirstNameArr(fullName));
