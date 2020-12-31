@@ -9,7 +9,13 @@ console.log("App.js is running");
 var app = {
     title: "Can't decide?",
     subtitle: "We will help you choose!",
-    options: ['milk', 'eggs', 'banana']
+    options: ['banana', 'milk', 'eggs', 'chicken']
+};
+
+var makeDecision = function makeDecision() {
+
+    var optionIndex = Math.floor(Math.random() * app.options.length);
+    console.log("Choose item:", app.options[optionIndex]);
 };
 
 var clearList = function clearList() {
@@ -55,22 +61,24 @@ var render = function render() {
             app.options.length > 0 ? "Here are your options" : "No Options"
         ),
         React.createElement(
-            "p",
-            null,
-            app.options.length
-        ),
-        React.createElement(
             "ol",
             null,
             app.options.map(function (item) {
                 return React.createElement(
                     "li",
-                    { id: item },
+                    { key: item },
                     "Item: ",
                     item
                 );
             })
         ),
+        React.createElement(
+            "button",
+            { disabled: app.options.length == 0, onClick: makeDecision },
+            "Make a decision"
+        ),
+        React.createElement("br", null),
+        React.createElement("br", null),
         React.createElement(
             "button",
             { onClick: clearList },

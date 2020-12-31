@@ -7,8 +7,14 @@ console.log("App.js is running");
 const app = {
     title: "Can't decide?",
     subtitle: "We will help you choose!",
-    options: ['milk', 'eggs', 'banana']
+    options: ['banana', 'milk', 'eggs', 'chicken']
 };
+
+const makeDecision = () => {
+    
+    const optionIndex = (Math.floor(Math.random() * app.options.length));
+    console.log("Choose item:", app.options[optionIndex]);
+}
 
 const clearList = () => {
 
@@ -41,15 +47,17 @@ const render = () =>
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? "Here are your options":"No Options"}</p>
-            <p>{app.options.length}</p>
             <ol>
                 {
                     app.options.map((item) => 
                     {
-                        return <li id={item}>Item: {item}</li>;
+                        return <li key={item}>Item: {item}</li>;
                     })
                 }
             </ol>
+            <button disabled={app.options.length == 0}onClick={makeDecision}>Make a decision</button>
+            <br />
+            <br />
             <button onClick={clearList}>Remove all items</button>
             <br />
             <br />
