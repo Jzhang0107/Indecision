@@ -74,3 +74,43 @@ const render = () =>
 }
 
 render();
+
+class Person 
+{
+    constructor (userName='Bob', userAge = 0)
+    {
+        this.name = userName;
+        this.age = userAge;
+    }
+    getDescription()
+    {
+        return `${this.name} is ${this.age} year(s) old!`
+    }
+}
+
+class Traveler extends Person
+{
+    constructor(userName, userAge, userLocation)
+    {
+        super(userName, userAge);
+        this.location = userLocation;
+    }
+    getGreeting()
+    {
+        if(!!this.location)
+        {
+            return `Hi. I am ${this.name}. I'm from ${this.location}`
+        }
+        else
+        {
+            return `Hi. I am ${this.name}.`
+        }
+    }
+}
+
+const me = new Traveler('Jason', 20, 'Boston');
+const random = new Traveler();
+
+console.log(me.getGreeting());
+console.log(random.getGreeting());
+console.log('Hello')
