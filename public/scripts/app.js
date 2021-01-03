@@ -29,7 +29,7 @@ var IndecisionApp = function (_React$Component) {
         value: function makeDecision() {
             var randomIndex = Math.floor(Math.random() * this.state.options.length);
 
-            option = this.state.options[randomIndex];
+            var option = this.state.options[randomIndex];
 
             console.log('You have chosen ' + option);
         }
@@ -53,7 +53,7 @@ var IndecisionApp = function (_React$Component) {
                 React.createElement(Header, { title: title, subtitle: subtitle }),
                 React.createElement(MakeDecision, {
                     hasOptions: this.state.options.length > 0,
-                    makeDecision: this.state.makeDecision
+                    makeDecision: this.makeDecision
                 }),
                 React.createElement('br', null),
                 React.createElement(Options, {

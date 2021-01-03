@@ -13,7 +13,7 @@ class IndecisionApp extends React.Component{
     {
         const randomIndex = Math.floor(Math.random() * this.state.options.length);
 
-        option = this.state.options[randomIndex];
+        const option = this.state.options[randomIndex];
 
         console.log(`You have chosen ${option}`);
     }
@@ -34,7 +34,7 @@ class IndecisionApp extends React.Component{
                 <Header title={title} subtitle={subtitle}/>
                 <MakeDecision
                     hasOptions={this.state.options.length > 0} 
-                    makeDecision={this.state.makeDecision}
+                    makeDecision={this.makeDecision}
                 />
                 <br />
                 <Options 
