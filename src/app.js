@@ -106,7 +106,7 @@ class Options extends React.Component{
     {
         return(
             <div>
-                <button onClick={this.props.removeAllOptions}>Remove all button</button><br />
+                <button onClick={this.props.removeAllOptions}>Remove all options</button><br />
                 Options go here:
                 {this.props.options.map((item) => <Option key={item} optionText={item} />)}
             </div>
@@ -143,6 +143,7 @@ class AddOptions extends React.Component{
         const option = e.target.elements.option.value.trim();
         const error = this.props.addOption(option);
 
+        e.target.elements.option.value = ''
         this.setState(() => {
             return {error: error}
         })

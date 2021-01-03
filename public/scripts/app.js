@@ -170,7 +170,7 @@ var Options = function (_React$Component4) {
                 React.createElement(
                     'button',
                     { onClick: this.props.removeAllOptions },
-                    'Remove all button'
+                    'Remove all options'
                 ),
                 React.createElement('br', null),
                 'Options go here:',
@@ -230,6 +230,7 @@ var AddOptions = function (_React$Component6) {
             var option = e.target.elements.option.value.trim();
             var error = this.props.addOption(option);
 
+            e.target.elements.option.value = '';
             this.setState(function () {
                 return { error: error };
             });
