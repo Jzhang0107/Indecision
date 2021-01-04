@@ -38,7 +38,6 @@ var IndecisionApp = function (_React$Component) {
                         return { options: options };
                     });
                 }
-                console.log('Fetching data');
             } catch (e) {
                 console.log('There has been an error');
             }
@@ -49,7 +48,6 @@ var IndecisionApp = function (_React$Component) {
             if (prevState.options.length !== this.state.options.length) {
                 var json = JSON.stringify(this.state.options);
                 localStorage.setItem('options', json);
-                console.log('Saving data');
             }
         }
     }, {
@@ -291,4 +289,4 @@ var User = function User(props) {
     );
 };
 
-ReactDOM.render(React.createElement(IndecisionApp, { options: ['Banana', 'Milk', 'Chicken'] }), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));

@@ -22,7 +22,6 @@ class IndecisionApp extends React.Component{
             {
                 this.setState(() => ({options: options}));
             }
-            console.log('Fetching data');
         }
         catch (e)
         {
@@ -35,7 +34,6 @@ class IndecisionApp extends React.Component{
         {
             const json = JSON.stringify(this.state.options);
             localStorage.setItem('options', json)
-            console.log('Saving data');
         }
     }
     makeDecision()
@@ -219,4 +217,4 @@ const User = (props) =>
     );
 }
 
-ReactDOM.render(<IndecisionApp options={['Banana', 'Milk', 'Chicken']} />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
