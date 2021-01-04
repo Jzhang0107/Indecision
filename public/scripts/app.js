@@ -19,9 +19,10 @@ var IndecisionApp = function (_React$Component) {
         _this.state = {
             options: props.options
         };
-        _this.removeAllOptions = _this.removeAllOptions.bind(_this);
         _this.makeDecision = _this.makeDecision.bind(_this);
         _this.addOption = _this.addOption.bind(_this);
+        _this.removeAllOptions = _this.removeAllOptions.bind(_this);
+        _this.removeOption = _this.removeOption.bind(_this);
         return _this;
     }
 
@@ -35,6 +36,17 @@ var IndecisionApp = function (_React$Component) {
             console.log('You have chosen ' + option);
         }
     }, {
+        key: 'removeOption',
+        value: function removeOption(itemToRemove) {
+            this.setState(function (prevState) {
+                return {
+                    options: prevState.options.filter(function (option) {
+                        return itemToRemove !== option;
+                    })
+                };
+            });
+        }
+    }, {
         key: 'removeAllOptions',
         value: function removeAllOptions() {
             this.setState(function () {
@@ -45,11 +57,9 @@ var IndecisionApp = function (_React$Component) {
         key: 'addOption',
         value: function addOption(option) {
             if (!option) {
-                // return console.log('Invalid input');
                 return 'Invalid input';
             }
             if (this.state.options.indexOf(option) >= 0) {
-                // return console.log('Item already in array');
                 return 'Item already in array';
             }
             this.setState(function (prevState) {
@@ -62,6 +72,7 @@ var IndecisionApp = function (_React$Component) {
         key: 'render',
         value: function render() {
             var subtitle = "Can't Decide";
+
             return React.createElement(
                 'div',
                 null,
@@ -73,6 +84,7 @@ var IndecisionApp = function (_React$Component) {
                 React.createElement('br', null),
                 React.createElement(Options, {
                     options: this.state.options,
+                    removeOption: this.removeOption,
                     removeAllOptions: this.removeAllOptions
                 }),
                 React.createElement('br', null),
@@ -138,7 +150,11 @@ var Options = function Options(props) {
         React.createElement('br', null),
         'Options go here:',
         props.options.map(function (item) {
-            return React.createElement(Option, { key: item, optionText: item });
+            return React.createElement(Option, {
+                key: item,
+                optionText: item,
+                removeOption: props.removeOption
+            });
         })
     );
 };
@@ -146,8 +162,18 @@ var Options = function Options(props) {
 var Option = function Option(props) {
     return React.createElement(
         'div',
-        { id: props.option },
-        props.optionText
+        null,
+        props.optionText,
+        ' ---',
+        React.createElement(
+            'button',
+            {
+                onClick: function onClick(e) {
+                    props.removeOption(props.optionText);
+                }
+            },
+            'Remove'
+        )
     );
 };
 
@@ -233,4 +259,4 @@ var User = function User(props) {
     );
 };
 
-ReactDOM.render(React.createElement(IndecisionApp, { options: ['Himeragi', 'Enju', 'Regina'] }), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, { options: ['Banana', 'Milk', 'Chicken'] }), document.getElementById('app'));
