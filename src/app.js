@@ -11,6 +11,14 @@ class IndecisionApp extends React.Component{
         this.removeAllOptions = this.removeAllOptions.bind(this);
         this.removeOption = this.removeOption.bind(this);
     }
+    componentDidMount()
+    {
+        console.log('Fetching data');
+    }
+    componentDidUpdate()
+    {
+        console.log('Saving data');
+    }
     makeDecision()
     {
         const randomIndex = Math.floor(Math.random() * this.state.options.length);
