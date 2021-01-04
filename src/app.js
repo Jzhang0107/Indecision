@@ -13,11 +13,30 @@ class IndecisionApp extends React.Component{
     }
     componentDidMount()
     {
-        console.log('Fetching data');
+        try
+        {
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+
+            if(options)
+            {
+                this.setState(() => ({options: options}));
+            }
+            console.log('Fetching data');
+        }
+        catch (e)
+        {
+            console.log('There has been an error');
+        }
     }
-    componentDidUpdate()
+    componentDidUpdate(prevProps, prevState)
     {
-        console.log('Saving data');
+        if(prevState.options.length !== this.state.options.length)
+        {
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json)
+            console.log('Saving data');
+        }
     }
     makeDecision()
     {
@@ -117,7 +136,7 @@ const Options = (props) =>
     return(
         <div>
             <button onClick={props.removeAllOptions}>Remove all options</button><br />
-            Options go here:
+            {props.options.length <= 0 && <p>There are no current options</p>}
             {props.options.map((item) => 
                 (
                     <Option 
@@ -165,9 +184,12 @@ class AddOptions extends React.Component{
         const option = e.target.elements.option.value.trim();
         const error = this.props.addOption(option);
 
-        e.target.elements.option.value = ''
-
         this.setState(() => ({error: error}))
+
+        if (!error)
+        {
+            e.target.elements.option.value = ''
+        }
     }
     render()
     {
