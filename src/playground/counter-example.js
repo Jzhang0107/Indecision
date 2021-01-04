@@ -46,7 +46,7 @@ class Counter extends React.Component
         this.minusOne = this.minusOne.bind(this);
         this.resetCounter = this.resetCounter.bind(this);
         this.state = {
-            count: 0
+            count: props.count
         };
     }
     addOne()
@@ -87,6 +87,10 @@ class Counter extends React.Component
             </div>
         );
     }
+}
+
+Counter.defaultProps = {
+    count: 10
 }
 
 ReactDOM.render(<Counter />, document.getElementById('app'));

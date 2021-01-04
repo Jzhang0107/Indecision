@@ -17,7 +17,7 @@ var IndecisionApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
         _this.state = {
-            options: []
+            options: props.options
         };
         _this.removeAllOptions = _this.removeAllOptions.bind(_this);
         _this.makeDecision = _this.makeDecision.bind(_this);
@@ -38,9 +38,7 @@ var IndecisionApp = function (_React$Component) {
         key: 'removeAllOptions',
         value: function removeAllOptions() {
             this.setState(function () {
-                return {
-                    options: []
-                };
+                return { options: [] };
             });
         }
     }, {
@@ -55,21 +53,19 @@ var IndecisionApp = function (_React$Component) {
                 return 'Item already in array';
             }
             this.setState(function (prevState) {
-                return {
-                    options: prevState.options.concat(option)
-                };
+                return { options: prevState.options.concat(option) };
             });
+
             console.log(option + ' has been added');
         }
     }, {
         key: 'render',
         value: function render() {
-            var title = 'Indecision';
             var subtitle = "Can't Decide";
             return React.createElement(
                 'div',
                 null,
-                React.createElement(Header, { title: title, subtitle: subtitle }),
+                React.createElement(Header, { subtitle: subtitle }),
                 React.createElement(MakeDecision, {
                     hasOptions: this.state.options.length > 0,
                     makeDecision: this.makeDecision
@@ -90,6 +86,10 @@ var IndecisionApp = function (_React$Component) {
     return IndecisionApp;
 }(React.Component);
 
+IndecisionApp.defaultProps = {
+    options: []
+};
+
 var Header = function Header(props) {
     return React.createElement(
         'div',
@@ -105,6 +105,10 @@ var Header = function Header(props) {
             props.subtitle
         )
     );
+};
+
+Header.defaultProps = {
+    title: 'Indecision Default'
 };
 
 var MakeDecision = function MakeDecision(props) {
@@ -171,6 +175,7 @@ var AddOptions = function (_React$Component2) {
             var error = this.props.addOption(option);
 
             e.target.elements.option.value = '';
+
             this.setState(function () {
                 return { error: error };
             });
@@ -228,4 +233,4 @@ var User = function User(props) {
     );
 };
 
-ReactDOM.render(React.createElement(IndecisionApp, null), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, { options: ['Himeragi', 'Enju', 'Regina'] }), document.getElementById('app'));

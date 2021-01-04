@@ -4,7 +4,7 @@ class IndecisionApp extends React.Component{
     {
         super(props);
         this.state = {
-            options: []
+            options: props.options
         };
         this.removeAllOptions = this.removeAllOptions.bind(this);
         this.makeDecision = this.makeDecision.bind(this);
@@ -20,11 +20,7 @@ class IndecisionApp extends React.Component{
     }
     removeAllOptions()
     {
-        this.setState(() => {
-            return{
-                options: []
-            };
-        });
+        this.setState(() => ({options: []}))
     }
     addOption(option)
     {
@@ -38,20 +34,16 @@ class IndecisionApp extends React.Component{
             // return console.log('Item already in array');
             return 'Item already in array';
         }
-        this.setState((prevState) => {
-            return{
-                options: prevState.options.concat(option)
-            }
-        })
+        this.setState((prevState) => ({options: prevState.options.concat(option)}))
+
         console.log(`${option} has been added`);
     }
     render()
     {
-        const title = 'Indecision';
         const subtitle = "Can't Decide";
         return(
             <div>
-                <Header title={title} subtitle={subtitle}/>
+                <Header subtitle={subtitle}/>
                 <MakeDecision
                     hasOptions={this.state.options.length > 0} 
                     makeDecision={this.makeDecision}
@@ -70,6 +62,11 @@ class IndecisionApp extends React.Component{
     }
 }
 
+IndecisionApp.defaultProps = 
+{
+    options: []
+}
+
 const Header = (props) =>
 {
     return(
@@ -79,6 +76,11 @@ const Header = (props) =>
         </div>
 
     );
+}
+
+Header.defaultProps = 
+{
+    title: 'Indecision Default'
 }
 
 const MakeDecision = (props) =>
@@ -134,9 +136,8 @@ class AddOptions extends React.Component{
         const error = this.props.addOption(option);
 
         e.target.elements.option.value = ''
-        this.setState(() => {
-            return {error: error}
-        })
+        
+        this.setState(() => ({error: error}))
     }
     render()
     {
@@ -166,4 +167,4 @@ const User = (props) =>
     );
 }
 
-ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp options={['Himeragi', 'Enju', 'Regina']} />, document.getElementById('app'));
