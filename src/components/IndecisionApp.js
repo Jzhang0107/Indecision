@@ -9,17 +9,41 @@ import Options from './Options';
 
 export default class IndecisionApp extends React.Component{
 
-    constructor(props)
+    state = {
+        options: []
+    };
+    makeDecision = () =>
     {
-        super(props);
-        this.state = {
-            options: []
-        };
-        this.makeDecision = this.makeDecision.bind(this);
-        this.addOption = this.addOption.bind(this);
-        this.removeAllOptions = this.removeAllOptions.bind(this);
-        this.removeOption = this.removeOption.bind(this);
-    }
+        const randomIndex = Math.floor(Math.random() * this.state.options.length);
+
+        const option = this.state.options[randomIndex];
+
+        console.log(`You have chosen ${option}`);
+    };
+    removeOption = (itemToRemove) =>
+    {
+        this.setState((prevState) => ({
+            options: prevState.options.filter((option) => itemToRemove !== option)
+        }));
+    };
+    removeAllOptions = () =>
+    {
+        this.setState(() => ({options: []}));
+    };
+    addOption = (option) =>
+    {
+        if(!option)
+        {
+            return 'Invalid input';
+        }
+        if(this.state.options.indexOf(option) >= 0)
+        {
+            return 'Item already in array';
+        }
+        this.setState((prevState) => ({options: prevState.options.concat(option)}))
+
+        console.log(`${option} has been added`);
+    };
     componentDidMount()
     {
         try
@@ -36,7 +60,7 @@ export default class IndecisionApp extends React.Component{
         {
             console.log('There has been an error');
         }
-    }
+    };
     componentDidUpdate(prevProps, prevState)
     {
         if(prevState.options.length !== this.state.options.length)
@@ -44,39 +68,7 @@ export default class IndecisionApp extends React.Component{
             const json = JSON.stringify(this.state.options);
             localStorage.setItem('options', json)
         }
-    }
-    makeDecision()
-    {
-        const randomIndex = Math.floor(Math.random() * this.state.options.length);
-
-        const option = this.state.options[randomIndex];
-
-        console.log(`You have chosen ${option}`);
-    }
-    removeOption(itemToRemove)
-    {
-        this.setState((prevState) => ({
-            options: prevState.options.filter((option) => itemToRemove !== option)
-        }));
-    }
-    removeAllOptions()
-    {
-        this.setState(() => ({options: []}));
-    }
-    addOption(option)
-    {
-        if(!option)
-        {
-            return 'Invalid input';
-        }
-        if(this.state.options.indexOf(option) >= 0)
-        {
-            return 'Item already in array';
-        }
-        this.setState((prevState) => ({options: prevState.options.concat(option)}))
-
-        console.log(`${option} has been added`);
-    }
+    };
     render()
     {
         const subtitle = "Can't Decide";
