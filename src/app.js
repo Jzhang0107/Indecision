@@ -1,16 +1,5 @@
-// install -> import -> use
-
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
+import IndecisionApp from './components/IndecisionApp';
 
-class HelloWorld extends React.Component
-{
-    render()
-    {
-        return(
-            <p>Regina is cute!</p>
-        );
-    }
-}
-
-ReactDOM.render(<HelloWorld />, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
