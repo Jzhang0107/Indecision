@@ -75,11 +75,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-console.log('Regina is cute!!');
+console.log('Regina is cute!!!');
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* square */](5));
 
-console.log("Is an adult", __WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* isAdult */](18));
+console.log("Is an adult", __WEBPACK_IMPORTED_MODULE_1__person_js__["c" /* isAdult */](18));
 console.log("Can drink",__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink */](20));
+console.log("Is senior",__WEBPACK_IMPORTED_MODULE_1__person_js__["b" /* default */](65));
 
 /***/ }),
 /* 1 */
@@ -87,7 +88,10 @@ console.log("Can drink",__WEBPACK_IMPORTED_MODULE_1__person_js__["a" /* canDrink
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return square; });
+/* unused harmony export default */
 const square = (x) => x * x;
+
+const add = (num1, num2) => num1 + num2;
 
 
 
@@ -100,11 +104,15 @@ const square = (x) => x * x;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return isAdult; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isAdult; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
 const isAdult = (age) => age >= 18;
 
 const canDrink = (age) => age >= 21;
+
+const isSenior = (age) => age >= 65;
+
+/* harmony default export */ __webpack_exports__["b"] = (isSenior);
 
 
 
