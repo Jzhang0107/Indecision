@@ -1050,7 +1050,7 @@ var HelloWorld = function (_React$Component) {
             return _react2.default.createElement(
                 'p',
                 null,
-                'Hello World'
+                'Regina is cute!'
             );
         }
     }]);
