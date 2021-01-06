@@ -6,17 +6,23 @@ import AddOptions from './AddOptions';
 import Header from './Header';
 import MakeDecision from './MakeDecision';
 import Options from './Options';
+import OptionModal from './OptionModal';
 
 export default class IndecisionApp extends React.Component{
 
     state = {
-        options: []
+        options: [],
+        selectedOption: undefined
     };
     makeDecision = () =>
     {
         const randomIndex = Math.floor(Math.random() * this.state.options.length);
 
         const option = this.state.options[randomIndex];
+
+        this.setState(() => ({
+            selectedOption: option
+        }));
 
         console.log(`You have chosen ${option}`);
     };
@@ -28,8 +34,12 @@ export default class IndecisionApp extends React.Component{
     };
     removeAllOptions = () =>
     {
-        this.setState(() => ({options: []}));
+        this.setState(() => ({ options: [] }));
     };
+    removeModal = () =>
+    {
+        this.setState(() => ({ selectedOption: undefined }))
+    }
     addOption = (option) =>
     {
         if(!option)
@@ -75,7 +85,7 @@ export default class IndecisionApp extends React.Component{
 
         return(
             <div>
-                <Header subtitle={subtitle}/>
+                <Header title='Waifu selector' subtitle={subtitle}/>
                 <MakeDecision
                     hasOptions={this.state.options.length > 0} 
                     makeDecision={this.makeDecision}
@@ -89,6 +99,10 @@ export default class IndecisionApp extends React.Component{
                 <br />
                 <AddOptions 
                     addOption={this.addOption}
+                />
+                <OptionModal 
+                    selectedOption={this.state.selectedOption}
+                    removeModal={this.removeModal}
                 />
             </div>
         );
