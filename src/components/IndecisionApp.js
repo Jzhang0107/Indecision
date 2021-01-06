@@ -81,7 +81,7 @@ export default class IndecisionApp extends React.Component{
     };
     render()
     {
-        const subtitle = "Can't Decide";
+        const subtitle = "We will choose best girl for you!";
 
         return(
             <div>
