@@ -86,20 +86,22 @@ export default class IndecisionApp extends React.Component{
         return(
             <div>
                 <Header title='Waifu selector' subtitle={subtitle}/>
-                <MakeDecision
+                <div className='container'>
+                    <MakeDecision
                     hasOptions={this.state.options.length > 0} 
                     makeDecision={this.makeDecision}
-                />
-                <br />
-                <Options 
-                    options={this.state.options}
-                    removeOption={this.removeOption}
-                    removeAllOptions={this.removeAllOptions}
-                />
-                <br />
-                <AddOptions 
-                    addOption={this.addOption}
-                />
+                    />
+                    <br />
+                    <Options 
+                        options={this.state.options}
+                        removeOption={this.removeOption}
+                        removeAllOptions={this.removeAllOptions}
+                    />
+                    <br />
+                    <AddOptions 
+                        addOption={this.addOption}
+                    />
+                </div>
                 <OptionModal 
                     selectedOption={this.state.selectedOption}
                     removeModal={this.removeModal}
