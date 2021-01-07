@@ -10,11 +10,12 @@ const Options = (props) =>
         </div>
         <br />
         {props.options.length <= 0 && <p className='widget__message'>There are no current options</p>}
-        {props.options.map((item) => 
+        {props.options.map((item, index) => 
             (
                 <Option 
                     key={item} 
                     optionText={item}
+                    count={index + 1}
                     removeOption={props.removeOption}
                 />
             ))

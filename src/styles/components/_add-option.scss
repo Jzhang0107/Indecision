@@ -1,0 +1,31 @@
+.add-option-error
+{
+    color: $off-white;
+    padding: 0 $m-size;
+    font-style: italic;
+}
+.add-option
+{
+    display: flex;
+    padding: $m-size;
+}
+.add-option__textbox
+{
+    background-color: $dark-blue;
+    flex-grow: 1;
+    border: none;
+    border-bottom: .3rem solid darken($dark-blue, 10%);
+    margin-right: $m-size;
+    color: $off-white;
+    padding: 0 $s-size;
+}
+
+@media (min-width: 45rem)
+{
+    /*
+    .add-option
+    {
+        flex-direction: row;
+    }
+    */
+}
