@@ -10,7 +10,7 @@ const OptionModal = (props) =>
     >
         <h3>Waifu chosen:</h3>
         {props.selectedOption && <p>{props.selectedOption}</p>}
-        <button onClick={props.removeModal}>Okay</button>
+        <button className='button' onClick={props.removeModal}>Okay</button>
     </Modal>
 );
 

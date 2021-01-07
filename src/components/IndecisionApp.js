@@ -92,7 +92,7 @@ export default class IndecisionApp extends React.Component{
                     makeDecision={this.makeDecision}
                     />
                     <br />
-                    <Options 
+                    <Options
                         options={this.state.options}
                         removeOption={this.removeOption}
                         removeAllOptions={this.removeAllOptions}
