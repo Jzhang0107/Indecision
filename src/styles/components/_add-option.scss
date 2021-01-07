@@ -20,12 +20,14 @@
     padding: 0 $s-size;
 }
 
-@media (min-width: 45rem)
+@media (max-width: $desktop-breakpoint)
 {
-    /*
     .add-option
     {
-        flex-direction: row;
+        flex-direction: column;
     }
-    */
+    .add-option__textbox
+    {
+        margin: 0 0 $s-size 0;
+    }
 }
