@@ -4,10 +4,12 @@ import Option from './Option';
 const Options = (props) =>
 (
     <div>
-        <button className='button button--remove' onClick={props.removeAllOptions}>Remove all options</button>
+        <div className='widget-header'>
+            <h3 className='widget-header__title'>Your options:</h3>
+            <button className='button button--remove' onClick={props.removeAllOptions}>Remove all options</button>
+        </div>
         <br />
-        <br />
-        {props.options.length <= 0 && <p>There are no current options</p>}
+        {props.options.length <= 0 && <p className='widget__message'>There are no current options</p>}
         {props.options.map((item) => 
             (
                 <Option 

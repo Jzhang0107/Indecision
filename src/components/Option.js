@@ -2,7 +2,7 @@ import React from 'react';
 
 const Option = (props) =>
 (
-    <div>
+    <div className='options-list'>
         {props.optionText}
         <button
             className='button button--remove'
