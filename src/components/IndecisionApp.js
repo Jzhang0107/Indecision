@@ -81,11 +81,11 @@ export default class IndecisionApp extends React.Component{
     };
     render()
     {
-        const subtitle = "We will choose best girl for you!";
+        const subtitle = "An option will be chosen for you!";
 
         return(
             <div>
-                <Header title='Waifu selector' subtitle={subtitle}/>
+                <Header title='Options selector' subtitle={subtitle}/>
                 <div className='container'>
                     <MakeDecision
                     hasOptions={this.state.options.length > 0} 
